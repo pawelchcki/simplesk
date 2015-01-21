@@ -6,7 +6,6 @@ public class CloseEventResponder {
 
   @Subscribe
   public void handleClosing(CloseEvent ev) {
-    System.err.println("closer");
     if (ev.getCause() != null) {
       ev.getCause().printStackTrace();
       System.exit(1);

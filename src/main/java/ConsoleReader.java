@@ -11,10 +11,8 @@ public class ConsoleReader extends Thread {
   EventBus eventBus;
 
   public void run() {
-    System.err.println("started");
     BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
     for (; ; ) {
-      System.err.println(in);
       String line = null;
       try {
         line = in.readLine();
@@ -25,7 +23,7 @@ public class ConsoleReader extends Thread {
       if (line == null) {
         break;
       }
-      System.err.println(line);
+      System.out.println(line);
       eventBus.post(new LineEvent(line));
       if ("quit".equals(line.toLowerCase())) {
         eventBus.post(new CloseEvent());

@@ -15,7 +15,8 @@ public class DefaultModule extends AbstractModule {
     bind(EventLoopGroup.class).to(NioEventLoopGroup.class);
     bind(Bootstrap.class).toProvider(BootstrapProvider.class);
     bind(EventBus.class).toInstance(eventBus);
-    requireBinding(CloseEventResponder.class);
+
+    bind(CloseEventResponder.class).asEagerSingleton();
     Names.bindProperties(binder(), System.getProperties());
   }
 }
